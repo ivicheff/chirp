@@ -1,10 +1,10 @@
 import { type NextPage } from "next";
+import Head from "next/head";
 import Image from "next/image";
 
 import { SignInButton, useUser } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
-
 
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
 import { useState } from "react";
@@ -12,13 +12,8 @@ import { toast } from "react-hot-toast";
 import { PageLayout } from "~/components/layout";
 import { PostView } from "~/components/postview";
 
-
 const CreatePostWizard = () => {
   const { user } = useUser();
-
-  if (!user) return null;
-
-  const [input, setInput] = useState("");
 
   const ctx = api.useContext();
 
@@ -37,16 +32,16 @@ const CreatePostWizard = () => {
     },
   });
 
-  
+  const [input, setInput] = useState("");
 
-  
+  if (!user) return null;
 
   return (
     <div className="flex w-full gap-3">
       <Image
-        src={user.profileImageUrl}
+        src={user.profileImageUrl ?? null}
         className="h-14 w-14 rounded-full"
-        alt={`@${user.username}'s profile picture`}
+        alt={`@${user.username ?? null}'s profile picture`}
         width={56}
         height={56}
       />
