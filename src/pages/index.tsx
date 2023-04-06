@@ -16,6 +16,10 @@ import { PostView } from "~/components/postview";
 const CreatePostWizard = () => {
   const { user } = useUser();
 
+  if (!user) return null;
+
+  const [input, setInput] = useState("");
+
   const ctx = api.useContext();
 
   const { mutate, isLoading: isPosting } = api.posts.create.useMutation({
@@ -33,9 +37,9 @@ const CreatePostWizard = () => {
     },
   });
 
-  const [input, setInput] = useState("");
+  
 
-  if (!user) return null;
+  
 
   return (
     <div className="flex w-full gap-3">
