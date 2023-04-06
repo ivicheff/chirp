@@ -1,11 +1,9 @@
 import { type NextPage } from "next";
-import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 
 import { SignInButton, useUser } from "@clerk/nextjs";
 
-import { RouterOutputs, api } from "~/utils/api";
+import { api } from "~/utils/api";
 
 
 import { LoadingPage, LoadingSpinner } from "~/components/loading";
